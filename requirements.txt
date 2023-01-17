@@ -1,0 +1,6 @@
+seaborn
+pandas
+numpy
+matplotlib
+scipy
+git+https://github.com/yannpom/blackbox-tools.git#egg=BlackBoxDecoder
