@@ -9,3 +9,10 @@
 
 /visual-studio/.vs/
 /.vs/
+
+/btfl_*
+/build/
+*.egg-info
+.DS_Store
+__pycache__/
+/.ipynb_checkpoints/

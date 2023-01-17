@@ -450,11 +450,23 @@ static size_t parseHeaderLine(flightLog_t *log, mmapStream_t *stream, ParserStat
         parseCommaSeparatedIntegers(fieldValue, motorOutputs, 2);
         log->sysConfig.motorOutputLow = motorOutputs[0];
         log->sysConfig.motorOutputHigh = motorOutputs[1];
-     } else if (startsWith(fieldName,"Log start datetime"))  {
+    } else if (startsWith(fieldName,"Log start datetime"))  {
     	log->dateTime = parseDateTime(fieldValue);
- 	}
+ 	} else if (startsWith(fieldName,"rollPID")) {
+        parseCommaSeparatedIntegers(fieldValue, &log->pidValues[0].p, 3);
+    } else if (startsWith(fieldName,"pitchPID")) {
+        parseCommaSeparatedIntegers(fieldValue, &log->pidValues[1].p, 3);
+    } else if (startsWith(fieldName,"yawPID")) {
+        parseCommaSeparatedIntegers(fieldValue, &log->pidValues[2].p, 3);
+    } else if (startsWith(fieldName,"ff_weight")) {
+        int v[3];
+        parseCommaSeparatedIntegers(fieldValue, v, 3);
+        log->pidValues[0].ff = v[0];
+        log->pidValues[1].ff = v[1];
+        log->pidValues[2].ff = v[2];
+    }
 
-     return frameSize;
+    return frameSize;
 }
 
 /**

@@ -143,6 +143,13 @@ typedef struct flightLogFrameDef_t {
 
 struct flightLogPrivate_t;
 
+typedef struct pid_values_t {
+    int p;
+    int i;
+    int d;
+    int ff;
+} pid_values_t;
+
 typedef struct flightLog_t {
 	time_t dateTime; //GPS start date and time
     flightLogStatistics_t stats;
@@ -163,6 +170,8 @@ typedef struct flightLog_t {
     gpsGFieldIndexes_t gpsFieldIndexes;
     gpsHFieldIndexes_t gpsHomeFieldIndexes;
     slowFieldIndexes_t slowFieldIndexes;
+
+    pid_values_t pidValues[3];
 
     struct flightLogPrivate_t *private;
 } flightLog_t;
