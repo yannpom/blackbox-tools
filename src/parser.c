@@ -1366,7 +1366,7 @@ bool flightLogParse(flightLog_t *log, int logIndex, FlightLogMetadataReady onMet
                     fillSerialBuffer(private->stream, frameSize, &parserState);
                 }
             } else if (command == EOF) {
-                fprintf(stderr, "Data file contained no events\n");
+                // fprintf(stderr, "Data file contained no events\n");
                 break;
             } 
             if (parserState == PARSER_STATE_TRANSITION) {

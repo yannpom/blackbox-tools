@@ -1,4 +1,8 @@
-# Blackbox Python decoder + Jupyter notebook to Analyse data
+# Blackbox Jupyter
+
+Analyse Betaflight Blackbox data with a Jupyter notebook
+
+## Try it here: [Run this Notebook with Binder.org](https://mybinder.org/v2/gh/yannpom/blackbox-tools/main?labpath=BlackBoxAnalyser.ipynb)
 
 ## Introduction
 
@@ -6,27 +10,27 @@ This is a fork of <https://github.com/betaflight/blackbox-tools> to:
 - add a Python interface to the existing C decoder.
 - provide an interactive Jupyter notebook to plot data
 
-## Usage with Binder
+## Features
 
-Thanks to [Binder] <https://mybinder.org/>, you can run the notebook in the Cloud right now:
+- Plot the gyro (raw+filtered) and D term "noise"
+- Find the flips & rolls and plot them all
+- Plot the step response of each axis
 
-[Run the Notebook on Binder] <https://mybinder.org/v2/gh/yannpom/blackbox-tools/main?labpath=BlackBoxAnalyser.ipynb>
+## Contribution
 
-## Manual installation of Python module
+Jupyter notebook are great for tinkering, so please have some fun ploting graphs. I would be glad to discuss with you about what plot we can add to improve this notebook. Do not hesitate to push a PR.
+
+## Run the notebook locally
+
+Install the dependencies and start Jupyter:
 
 ```bash
-pip install git+https://github.com/yannpom/blackbox-tools.git#egg=BlackBoxDecoder
+pip install -r requirements.txt
+jupyter notebook BlackBoxAnalyser.ipynb
 ```
 
-## Usage of Python module
+## Example output
 
-```python
-from blackbox import BlackBoxFile
-
-blackBoxFile = BlackBoxFile("btfl_all.bbl")
-print(blackBoxFile)
-
-for flight in blackBoxFile.flights:
-    print(flight)
-    # flight.data is a pandas.DataFrame with all the decoded data
-```
+![FFT](images/fft.png)
+![Roll](images/roll.png)
+![Step](images/step.png)

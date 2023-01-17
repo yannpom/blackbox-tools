@@ -1,6 +1,6 @@
 import _blackbox_tools
 import numpy as np
-import scipy
+import scipy.signal
 import pandas as pd
 
 
